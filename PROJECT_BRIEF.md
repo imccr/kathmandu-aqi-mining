@@ -9,8 +9,10 @@
 Find which combinations of weather conditions in Kathmandu tend to occur together with high air-pollution (high PM2.5) episodes, using **only two algorithms**: **Apriori (Association Rule Mining)** and **K-Means (Clustering)**.
 
 ## 2. Hard constraints (do not violate)
-- **Keep it very simple.** The instructor explicitly said the project can be very, very simple.
-- **Use ONLY algorithms studied in class:** Apriori for association rules, K-Means for clustering. Do not introduce decision trees, neural nets, DBSCAN, FP-Growth, or anything else unless explicitly asked.
+- **Keep it very simple.** The instructor explicitly said the project can be simple.
+- **Use ONLY Apriori (association rules) and K-Means (clustering).** 
+  - **This is a deliberate scope choice, not a syllabus limit.** The Data Mining elective (7th sem, Computer Engineering, IOE) *does* cover FP-Growth, decision trees, Bayesian classifiers, neural nets, hierarchical clustering and DBSCAN. The two algorithms were chosen because they are sufficient to answer the research question.
+  - Be ready to answer "why only these two?" in the viva. The honest answer: Apriori and K-Means approach the same question from two directions (rule-based co-occurrence and unsupervised grouping), and agreement between them is the finding. Adding more algorithms would have added length, not insight.
 - This is a *pattern-discovery / association* project. **Never claim causation.** Use wording like "associated with", "co-occurs with", "patterns indicate".
 
 ## 3. Context / how we got here (important — read this)

@@ -1,11 +1,8 @@
-# Kathmandu AQI data mining project
-# Install into a virtualenv (Ubuntu 24.04 pip is externally-managed):
-#   python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
-
 pandas>=2.0
 numpy>=1.24
 matplotlib>=3.7
-scikit-learn>=1.3      # KMeans, StandardScaler
-mlxtend>=0.23          # apriori, association_rules
-requests>=2.31         # build_dataset.py fetches PM2.5 from open-meteo
-jupyter>=1.0           # notebook for the writeup
+scikit-learn>=1.3
+mlxtend>=0.23
+jupyter>=1.0
+seaborn>=0.13
+

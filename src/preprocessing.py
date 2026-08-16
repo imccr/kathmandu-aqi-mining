@@ -21,12 +21,6 @@ SEASON_BY_MONTH = {
 
 
 def load_and_clean_data(path: str | Path) -> tuple[pd.DataFrame, dict]:
-    """Load the CSV, validate its schema, and apply conservative cleaning.
-
-    Numeric gaps are interpolated by time only when bounded on both sides, then
-    filled with the month-hour median (and finally the global median). This
-    preserves seasonal and diurnal structure better than a single global value.
-    """
     data = pd.read_csv(path)
     missing_columns = sorted(set(EXPECTED_COLUMNS) - set(data.columns))
     if missing_columns:
@@ -67,11 +61,6 @@ def load_and_clean_data(path: str | Path) -> tuple[pd.DataFrame, dict]:
 
 
 def categorize_pm25(series: pd.Series) -> pd.Series:
-    """Categorize PM2.5 using US EPA 24-hour concentration breakpoints.
-
-    Values are hourly observations, so these labels are concentration-severity
-    categories for pattern mining and must not be interpreted as official AQI.
-    """
     bins = [-np.inf, 9.0, 35.4, 55.4, 125.4, 225.4, np.inf]
     labels = ["Good", "Moderate", "USG", "Unhealthy", "Very_Unhealthy", "Hazardous"]
     return pd.cut(series, bins=bins, labels=labels, ordered=True)

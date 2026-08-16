@@ -14,13 +14,11 @@ BIN_FEATURES = [
 
 
 def _tertile_labels(series: pd.Series, name: str) -> pd.Series:
-    """Create reproducible, approximately balanced Low/Medium/High bins."""
     ranked = series.rank(method="first")
     return pd.qcut(ranked, 3, labels=[f"{name}=Low", f"{name}=Medium", f"{name}=High"])
 
 
 def build_transactions(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Discretize weather variables and one-hot encode row-wise transactions."""
     categorical = pd.DataFrame(index=data.index)
     for feature in BIN_FEATURES:
         categorical[feature] = _tertile_labels(data[feature], feature)
@@ -51,7 +49,6 @@ def mine_high_pm25_rules(
     min_confidence: float = 0.35,
     min_lift: float = 1.0,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Mine rules whose sole consequent is an Unhealthy-or-worse PM2.5 item."""
     itemsets = apriori(encoded, min_support=min_support, use_colnames=True, max_len=4)
     if itemsets.empty:
         return itemsets, pd.DataFrame()

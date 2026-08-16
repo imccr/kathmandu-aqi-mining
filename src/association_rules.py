@@ -1,5 +1,3 @@
-"""Transaction construction and Apriori association-rule mining."""
-
 from __future__ import annotations
 
 import numpy as np

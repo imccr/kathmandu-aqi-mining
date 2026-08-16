@@ -1,5 +1,3 @@
-"""K-Means model selection, fitting, profiling, and projection utilities."""
-
 from __future__ import annotations
 
 import pandas as pd
@@ -20,7 +18,7 @@ def evaluate_kmeans(
     k_values=range(2, 9),
     random_state: int = 42,
 ) -> tuple[pd.DataFrame, StandardScaler]:
-    """Return inertia and silhouette diagnostics for candidate k values."""
+    
     features = features or DEFAULT_FEATURES
     scaler = StandardScaler()
     scaled = scaler.fit_transform(data[features])
@@ -42,7 +40,7 @@ def fit_kmeans(
     features: list[str] | None = None,
     random_state: int = 42,
 ) -> tuple[pd.DataFrame, KMeans, StandardScaler, pd.DataFrame]:
-    """Fit K-Means and return labeled data, model, scaler, and PCA coordinates."""
+    
     features = features or DEFAULT_FEATURES
     scaler = StandardScaler()
     scaled = scaler.fit_transform(data[features])
@@ -58,7 +56,7 @@ def fit_kmeans(
 def cluster_profile(
     clustered: pd.DataFrame, features: list[str] | None = None
 ) -> pd.DataFrame:
-    """Summarize cluster size, weather conditions, and observed PM2.5."""
+    
     features = features or DEFAULT_FEATURES
     profile = clustered.groupby("cluster")[[*features, "pm25"]].mean().round(2)
     profile.insert(0, "n_observations", clustered.groupby("cluster").size())

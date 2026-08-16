@@ -1,5 +1,3 @@
-"""Loading, cleaning, feature engineering, and PM2.5 categorization."""
-
 from __future__ import annotations
 
 from pathlib import Path

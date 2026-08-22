@@ -63,4 +63,3 @@ def mine_high_pm25_rules(
     rules["consequent_text"] = rules["consequents"].map(lambda x: next(iter(x)))
     rules = rules.sort_values(["lift", "confidence", "support"], ascending=False)
     return itemsets, rules
-
